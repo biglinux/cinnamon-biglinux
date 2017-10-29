@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+package_name=cinnamon-biglinux
+mkdir -p "/usr/share/dpkgdivert/cinnamon-biglinux"
+case "$1" in
+  install)
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/cinnamon-biglinux/usrsharexsessionscinnamon2d.desktop" --rename "/usr/share/xsessions/cinnamon2d.desktop"
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/cinnamon-biglinux/usrsharexsessionscinnamon.desktop" --rename "/usr/share/xsessions/cinnamon.desktop"
+    ;;
+  upgrade)
+if [ "$(dpkg-divert --list "/usr/share/xsessions/cinnamon2d.desktop")" = "" ]
+then
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/cinnamon-biglinux/usrsharexsessionscinnamon2d.desktop" --rename "/usr/share/xsessions/cinnamon2d.desktop"
+fi
+if [ "$(dpkg-divert --list "/usr/share/xsessions/cinnamon.desktop")" = "" ]
+then
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/cinnamon-biglinux/usrsharexsessionscinnamon.desktop" --rename "/usr/share/xsessions/cinnamon.desktop"
+fi
+;;
+esac
+exit 0

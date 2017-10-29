@@ -1,0 +1,6 @@
+4949c6dd1585d53767bf8751b79b5f48  DEBIAN/control
+d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
+d69db25c32f6f589d669a0afbf678d4a  DEBIAN/dpkg-divert
+417c3fedfcf64bf56109d9beed4d6341  DEBIAN/postrm
+16dd53dbaafb159e0a09049aca7e148c  DEBIAN/preinst
+ce890bba0244eb48c943a2fd921ddfe6  usr/share/xsessions/cinnamon.desktop
